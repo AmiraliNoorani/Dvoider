@@ -152,6 +152,16 @@ idea_text = st.text_area(
     key="idea_input",
 )
 
+with st.expander("Try a sample idea", expanded=False):
+    for i, sample in enumerate(SAMPLE_IDEAS):
+        if st.button(sample["title"], key=f"main-sample-{i}", use_container_width=True):
+            st.session_state.raw_idea = sample["text"]
+            st.session_state.prefill_idx = i
+            st.session_state.step = 1
+            st.session_state.profile = None
+            st.session_state.matches = None
+            st.rerun()
+
 c1, c2 = st.columns([1, 5])
 with c1:
     structure_clicked = st.button("Structure with AI →", type="primary", use_container_width=True)

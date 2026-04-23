@@ -55,7 +55,7 @@ small, .dv-muted {{ color: var(--dv-muted) !important; }}
 
 /* Hero */
 .dv-hero {{
-  font-size: 3.2rem;
+  font-size: clamp(1.8rem, 6vw, 3.2rem);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
