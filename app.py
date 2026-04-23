@@ -108,9 +108,7 @@ with st.sidebar:
     for i, sample in enumerate(SAMPLE_IDEAS):
         if st.button(sample["title"], key=f"sample-{i}", use_container_width=True):
             st.session_state.raw_idea = sample["text"]
-            st.session_state.idea_input = sample["text"]
             st.session_state.prefill_idx = i
-            # If user loads a new sample, re-collapse downstream steps.
             st.session_state.step = 1
             st.session_state.profile = None
             st.session_state.matches = None
@@ -150,14 +148,12 @@ idea_text = st.text_area(
     placeholder="A short description of what you want to build, who it's for, "
                 "and what you're missing as a founder. Messy is fine — that's the point.",
     label_visibility="collapsed",
-    key="idea_input",
 )
 
 with st.expander("Try a sample idea", expanded=False):
     for i, sample in enumerate(SAMPLE_IDEAS):
         if st.button(sample["title"], key=f"main-sample-{i}", use_container_width=True):
             st.session_state.raw_idea = sample["text"]
-            st.session_state.idea_input = sample["text"]
             st.session_state.prefill_idx = i
             st.session_state.step = 1
             st.session_state.profile = None
